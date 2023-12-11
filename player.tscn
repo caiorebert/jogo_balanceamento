@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdhbg04scu0i7"]
+
+[ext_resource type="Texture2D" uid="uid://cgrvhimllvw3i" path="res://assets/thanos.png" id="1_6kwjj"]
+[ext_resource type="Texture2D" uid="uid://cyviccdohsove" path="res://assets/fundo.png" id="1_cwo8v"]
+[ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_iinga"]
+[ext_resource type="Texture2D" uid="uid://dmchmuf4fh685" path="res://assets/thanos_moviment1.png" id="4_wnbal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neuab"]
+size = Vector2(1916.07, 92.6575)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ge3so"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_6kwjj")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_wnbal")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_skame"]
+size = Vector2(218, 213)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2v8o8"]
+size = Vector2(28.5058, 1180.34)
+
+[node name="Area2D" type="Area2D"]
+position = Vector2(21, 0)
+scale = Vector2(0.702482, 0.576106)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(834.185, 535.085)
+scale = Vector2(1, 1.20878)
+texture = ExtResource("1_cwo8v")
+
+[node name="chao" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
+position = Vector2(832.762, 1017.17)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_neuab")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+position = Vector2(173.67, 151.014)
+script = ExtResource("1_iinga")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+position = Vector2(365, 359)
+scale = Vector2(0.402344, 0.431641)
+sprite_frames = SubResource("SpriteFrames_ge3so")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(378, 361)
+shape = SubResource("RectangleShape2D_skame")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-109.611, 473.871)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_2v8o8")
