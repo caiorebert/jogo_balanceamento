@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bdhbg04scu0i7"]
+[gd_scene load_steps=10 format=3 uid="uid://bdhbg04scu0i7"]
 
 [ext_resource type="Texture2D" uid="uid://cgrvhimllvw3i" path="res://assets/thanos.png" id="1_6kwjj"]
 [ext_resource type="Texture2D" uid="uid://cyviccdohsove" path="res://assets/fundo.png" id="1_cwo8v"]
@@ -33,6 +33,9 @@ size = Vector2(218, 213)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2v8o8"]
 size = Vector2(28.5058, 1180.34)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jm7gf"]
+size = Vector2(11.3882, 999.816)
+
 [node name="Area2D" type="Area2D"]
 position = Vector2(21, 0)
 scale = Vector2(0.702482, 0.576106)
@@ -46,7 +49,6 @@ texture = ExtResource("1_cwo8v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="chao"]
 position = Vector2(832.762, 1017.17)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_neuab")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
@@ -69,5 +71,13 @@ debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(-109.611, 473.871)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_2v8o8")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(1172.98, 482.55)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+position = Vector2(620.657, 17.3578)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_jm7gf")
