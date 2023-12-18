@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgi4x2s5g7g6x"]
+
+[ext_resource type="Texture2D" uid="uid://oa1ndmjdn5ko" path="res://assets/estudante.png" id="1_ll8tw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpqjg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ll8tw")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_im70x"]
+size = Vector2(187.905, 239.539)
+
+[node name="enemy" type="CharacterBody2D"]
+position = Vector2(537, 311)
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0.000244141, 1.73581)
+scale = Vector2(0.357901, 0.29235)
+sprite_frames = SubResource("SpriteFrames_hpqjg")
+animation = &"stop"
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.000244141, 8.67889)
+shape = SubResource("RectangleShape2D_im70x")
