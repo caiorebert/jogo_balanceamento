@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgi4x2s5g7g6x"]
+
+[ext_resource type="Script" path="res://scripts/mob.gd" id="1_bjsts"]
+[ext_resource type="Texture2D" uid="uid://oa1ndmjdn5ko" path="res://assets/estudante.png" id="1_ll8tw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e6bmq"]
+size = Vector2(466.019, 780.488)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7w6xp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ll8tw")
+}],
+"loop": true,
+"name": &"stop",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vcfcg"]
+size = Vector2(88, 96)
+
+[node name="mob" type="CharacterBody2D"]
+script = ExtResource("1_bjsts")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -4.76837e-07)
+scale = Vector2(0.103, 0.082)
+shape = SubResource("RectangleShape2D_e6bmq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -5.68434e-14)
+scale = Vector2(0.108541, 0.0929152)
+sprite_frames = SubResource("SpriteFrames_7w6xp")
+animation = &"stop"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="col" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(4, -8)
+shape = SubResource("RectangleShape2D_vcfcg")
+
+[connection signal="child_entered_tree" from="CollisionShape2D" to="." method="_on_collision_shape_2d_child_entered_tree"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

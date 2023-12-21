@@ -1,11 +1,32 @@
-[gd_scene load_steps=6 format=3 uid="uid://bdhbg04scu0i7"]
+[gd_scene load_steps=10 format=3 uid="uid://bdhbg04scu0i7"]
 
 [ext_resource type="Texture2D" uid="uid://cgrvhimllvw3i" path="res://assets/thanos.png" id="1_6kwjj"]
 [ext_resource type="Script" path="res://scripts/CharacterBody2D.gd" id="1_iinga"]
+[ext_resource type="Texture2D" uid="uid://c6u2ta45r4bdx" path="res://assets/attack1.png" id="2_r4782"]
+[ext_resource type="Texture2D" uid="uid://bxjfh71153gry" path="res://assets/attack2.png" id="3_7gp68"]
+[ext_resource type="Texture2D" uid="uid://cp4ulvm5yb0xx" path="res://assets/attack3.png" id="4_t6ap3"]
 [ext_resource type="Texture2D" uid="uid://dmchmuf4fh685" path="res://assets/thanos_moviment1.png" id="4_wnbal"]
+[ext_resource type="Texture2D" uid="uid://coxq0pnyvqca6" path="res://assets/attack4.png" id="5_t060w"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ge3so"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_r4782")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7gp68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_t6ap3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_t060w")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_6kwjj")
@@ -24,24 +45,24 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_skame"]
-size = Vector2(158.011, 208.956)
+size = Vector2(90, 111)
 
-[node name="Area2D" type="Area2D"]
-position = Vector2(21, 0)
-scale = Vector2(0.702482, 0.576106)
-
-[node name="thanos" type="CharacterBody2D" parent="."]
-position = Vector2(173.67, 151.014)
+[node name="thanos" type="CharacterBody2D"]
+position = Vector2(2, 0)
 script = ExtResource("1_iinga")
-metadata/_edit_group_ = true
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="thanos"]
-position = Vector2(365, 359)
-scale = Vector2(0.402344, 0.431641)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(10, -5.99997)
+scale = Vector2(0.19, 0.2)
 sprite_frames = SubResource("SpriteFrames_ge3so")
-animation = &"walk"
+animation = &"attack"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="thanos"]
-position = Vector2(359.44, 358.978)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, -6.5)
 shape = SubResource("RectangleShape2D_skame")
 debug_color = Color(0, 0.6, 0.701961, 0.419608)
+
+[node name="attack_point" type="Marker2D" parent="."]
+position = Vector2(69, -9)
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
